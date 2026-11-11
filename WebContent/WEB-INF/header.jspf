@@ -1,0 +1,51 @@
+<%-- Dau trang chung. Trang nhung phai khai bao: String title --%>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= h(title) %> - QLST Điện máy</title>
+<link rel="stylesheet" href="<%= ctx %>/assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap bar">
+    <a class="brand" href="<%= ctx %>/index.jsp">⚡ QLST Điện máy</a>
+    <nav class="nav">
+<% if (me == null) { %>
+      <a href="<%= ctx %>/view/member/LoginGUI5.jsp">Đăng nhập</a>
+      <a href="<%= ctx %>/view/member/RegisterGUI5.jsp">Đăng kí</a>
+<% } else {
+     String role = me.getRole(); %>
+      <a href="<%= ctx %><%= Util5.homePath(role) %>">Trang chủ</a>
+<%   if (Member5.ROLE_CUSTOMER.equals(role)) { %>
+      <a href="<%= ctx %>/view/customer/SearchProductGUI5.jsp">Tìm kiếm</a>
+      <a href="<%= ctx %>/view/customer/OrderGUI5.jsp">Đặt hàng</a>
+      <a href="<%= ctx %>/view/customer/CartGUI5.jsp">Giỏ hàng</a>
+<%   } else if (Member5.ROLE_WAREHOUSE.equals(role)) { %>
+      <a href="<%= ctx %>/view/warehouse/ProductManagementGUI5.jsp">Mặt hàng</a>
+      <a href="<%= ctx %>/view/warehouse/SupplierManagementGUI5.jsp">Nhà cung cấp</a>
+      <a href="<%= ctx %>/view/warehouse/ImportGoodsGUI5.jsp">Nhập hàng</a>
+      <a href="<%= ctx %>/view/warehouse/ApproveOrderGUI5.jsp">Duyệt đơn</a>
+<%   } else if (Member5.ROLE_SALES.equals(role)) { %>
+      <a href="<%= ctx %>/view/sales/SellAtCounterGUI5.jsp">Bán hàng tại quầy</a>
+<%   } else if (Member5.ROLE_MANAGER.equals(role)) { %>
+      <a href="<%= ctx %>/view/manager/ViewStatisticsGUI5.jsp">Thống kê</a>
+<%   } %>
+      <span class="who"><%= h(me.getFullName()) %> · <%= h(Util5.roleLabel(role)) %></span>
+      <a href="<%= ctx %>/view/member/ChangePasswordGUI5.jsp">Đổi mật khẩu</a>
+      <a href="<%= ctx %>/view/member/doLogout5.jsp">Đăng xuất</a>
+<% } %>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<%
+  String flashMsg = (String) session.getAttribute("flashMsg");
+  if (flashMsg != null) {
+      String flashType = (String) session.getAttribute("flashType");
+      session.removeAttribute("flashMsg");
+      session.removeAttribute("flashType");
+%>
+  <div class="alert <%= "ok".equals(flashType) ? "ok" : "err" %>"><%= h(flashMsg) %></div>
+<% } %>

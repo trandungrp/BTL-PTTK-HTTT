@@ -1,0 +1,13 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*,model.*,dao.*,util.Util5" %><%!
+    /** Viet tat: thoat HTML va dinh dang tien. */
+    static String h(Object o) { return Util5.esc(o); }
+    static String m(double v) { return Util5.money(v); }
+    /** Ten loai hang chua mat hang (tra theo listProduct cua Category5 - quan he aggregation Hinh 1). */
+    static String categoryOf(List<Category5> listCategory, int productId) {
+        for (Category5 c : listCategory) if (c.containsProduct(productId)) return c.getName();
+        return "";
+    }
+%><%
+    String ctx = request.getContextPath();
+    Member5 me = (Member5) session.getAttribute("member");
+%>

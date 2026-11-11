@@ -1,0 +1,13 @@
+<%-- Doc khoang thoi gian thong ke tu tham so from/to (mac dinh: tu dau nam den hom nay).
+     Khai bao: Date fromDate, toDate, toExcl; String fromStr, toStr --%>
+<%
+    Date today5 = Util5.startOfDay(new Date());
+    Date fromDate = Util5.parseIso(request.getParameter("from"));
+    Date toDate = Util5.parseIso(request.getParameter("to"));
+    if (fromDate == null) fromDate = Util5.firstDayOfYear(today5);
+    if (toDate == null) toDate = today5;
+    if (toDate.before(fromDate)) { Date tmp5 = fromDate; fromDate = toDate; toDate = tmp5; }
+    Date toExcl = Util5.addDays(toDate, 1);
+    String fromStr = Util5.fmtIso(fromDate);
+    String toStr = Util5.fmtIso(toDate);
+%>

@@ -1,0 +1,6 @@
+# Cau hinh ket noi JDBC toi MySQL (CSDL tao bang MySQL Workbench bang sql/01_schema.sql).
+# Sua db.user / db.password cho dung voi MySQL cua ban.
+# Co the ghi de bang bien moi truong DB_URL, DB_USER, DB_PASS (xem README.md o thu muc goc).
+db.url=jdbc:mysql://localhost:3306/qlst5_db?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Ho_Chi_Minh
+db.user=root
+db.password=MAT_KHAU_MYSQL_CUA_BAN
