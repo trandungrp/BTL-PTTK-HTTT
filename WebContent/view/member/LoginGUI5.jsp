@@ -15,10 +15,6 @@
       <a class="btn sec" href="<%= ctx %>/view/member/RegisterGUI5.jsp">Đăng kí thành viên</a>
     </div>
   </form>
-  <div class="hint-box">
-    Tài khoản mẫu (mật khẩu <b>123456</b>): <b>khach1</b> (khách hàng) · <b>kho1</b> (nhân viên kho) ·
-    <b>banhang1</b> (nhân viên bán hàng) · <b>quanly1</b> (quản lí)
-  </div>
 </div>
 <script>
 function chk() {

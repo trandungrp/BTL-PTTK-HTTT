@@ -15,6 +15,11 @@
       <!-- khai bao san page directive va thu vien JSTL (c, fmt, fn) cho moi trang JSP -->
       <include-prelude>/WEB-INF/prelude.jspf</include-prelude>
     </jsp-property-group>
+    <!-- cac doan include (header.jspf, footer.jspf, ...) cung luu UTF-8 -->
+    <jsp-property-group>
+      <url-pattern>*.jspf</url-pattern>
+      <page-encoding>UTF-8</page-encoding>
+    </jsp-property-group>
   </jsp-config>
 
   <!-- UpdateProductGUI5.jsp co o inoutImage : file (Hinh 3, Hinh 4) => doUpdateProduct5.jsp nhan multipart/form-data -->
